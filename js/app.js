@@ -7,6 +7,8 @@ window.onload = function() {
   const errorMessage = document.querySelector('.email-modal__error-message');
   const formGroup = document.querySelector('.email-modal__form-group');
   let thankContainer = document.getElementsByClassName('email-thank')[0];
+  let declineOffer = document.getElementsByClassName('email-modal__decline-offer')[0];
+
 
   function emailIsValid (email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -34,8 +36,17 @@ window.onload = function() {
   }
 
   let showThankMessage = () => {
-    thankContainer.classList.add('email-thank--success');  
+    thankContainer.classList.add('email-thank--success');
+    setTimeout(() => {
+      closeModal();
+    }, 3000);
   }
+
+  // Event Listeners
+
+  closeButton.addEventListener('click', () => {
+    closeModal();
+  });
 
   emailInput.addEventListener('click', () => {
     removeErrors();
@@ -49,7 +60,7 @@ window.onload = function() {
     }
   });
 
-  closeButton.addEventListener('click', () => {
+  declineOffer.addEventListener('click', () => {
     closeModal();
   });
 
