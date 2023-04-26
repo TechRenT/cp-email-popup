@@ -6,6 +6,7 @@ window.onload = function() {
   let emailButton = document.getElementsByClassName('email-modal__button')[0];
   const errorMessage = document.querySelector('.email-modal__error-message');
   const formGroup = document.querySelector('.email-modal__form-group');
+  let thankContainer = document.getElementsByClassName('email-thank')[0];
 
   function emailIsValid (email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -32,13 +33,17 @@ window.onload = function() {
     formGroup.classList.remove('email-modal__form-group--error');
   }
 
+  let showThankMessage = () => {
+    thankContainer.classList.add('email-thank--success');  
+  }
+
   emailInput.addEventListener('click', () => {
     removeErrors();
   })
 
   emailButton.addEventListener('click', () => {
     if (emailIsValid(emailInput.value)) {
-      console.log(emailInput.value);
+      showThankMessage();
     } else {
       addErrors();
     }
